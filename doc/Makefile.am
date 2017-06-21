@@ -1,5 +1,3 @@
-LIBTOOLFLAGS=--silent
-
 man_MANS=man/kateenc.1 man/katedec.1 man/katalyzer.1 man/KateDJ.1
 
 # dependency to get doc to be built

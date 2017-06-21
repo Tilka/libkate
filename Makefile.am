@@ -16,8 +16,6 @@ katepc_DATA+=misc/pkgconfig/oggkate.pc
 noinst_DATA+=misc/pkgconfig/oggkate-uninstalled.pc
 endif
 
-LIBTOOLFLAGS=--silent
-
 AM_CPPFLAGS=-I $(top_srcdir)/src -I $(top_srcdir)/include
 
 lib_libkate_la_SOURCES=\

@@ -7,7 +7,7 @@ AC_PREREQ(2.53)
 
 AC_CANONICAL_TARGET
 
-AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects -Wno-portability])
 AC_CONFIG_HEADERS([include/config.h])
 
 ifdef([AM_SILENT_RULES],[AM_SILENT_RULES])
@@ -27,6 +27,7 @@ dnl     then set AGE to 0.
 LIBKATE_SHARED_VERSION="4:0:3"
 LIBOGGKATE_SHARED_VERSION="3:2:2"
 
+AM_PROG_AR
 AC_PROG_CC_C_O
 AC_LIBTOOL_DLOPEN
 AC_PROG_LIBTOOL
