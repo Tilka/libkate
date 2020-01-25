@@ -1,7 +1,7 @@
 import sys
 import os
 
-from tools import Tools
+from .tools import Tools
 
 class Tester:
   def __init__(self,tools,contents,format):

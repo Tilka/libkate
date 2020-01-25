@@ -3,12 +3,12 @@ import os
 import tempfile
   
 
-from tools import Tools
+from .tools import Tools
 
 class Demuxer:
   def __init__(self,tools,filename,type):
     if not self.CreateDirectory():
-      raise Exception, 'Failed to create directory'
+      raise Exception('Failed to create directory')
     self.Demux(tools,filename,type)
 
   def GetDirectory(self):
@@ -17,7 +17,7 @@ class Demuxer:
   def CreateDirectory(self):
     try:
       self.directory=tempfile.mkdtemp(dir='.',prefix='katedj-tmp-extract-')
-    except OSError,e:
+    except OSError as e:
       return False
     return True
 

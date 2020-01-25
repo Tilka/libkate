@@ -3,14 +3,13 @@ import wx
 from wx.py.editor import EditorNotebook
 from wx.py.buffer import Buffer
 from wx.py.editor import Editor
-from constants import *
-from tester import Tester
+from .constants import *
+from .tester import Tester
 
 class UIEditor(wx.Dialog):
   def __init__(self,parent,tools,filename=None,format='kate'):
-    pre=wx.PreDialog()
-    pre.Create(parent,wx.ID_ANY,title='Editing Kate streams',pos=(100,100),size=(600,400),style=wx.DEFAULT_DIALOG_STYLE|wx.RESIZE_BORDER)
-    self.PostCreate(pre)
+    super().__init__()
+    self.Create(parent,wx.ID_ANY,title='Editing Kate streams',pos=(100,100),size=(600,400),style=wx.DEFAULT_DIALOG_STYLE|wx.RESIZE_BORDER)
 
     self.tools=tools
     self.format=format
@@ -87,7 +86,7 @@ class UIEditor(wx.Dialog):
     try:
       tester=Tester(self.tools,self.current_panel.editor.getText(),self.format)
       wx.MessageBox('No errors found','Success',parent=self,style=wx.OK)
-    except Exception,e:
+    except Exception as e:
       wx.MessageBox('Error:\n'+str(e),'Test failed',parent=self,style=wx.OK|wx.ICON_ERROR)
 
   def OnSave(self,event):

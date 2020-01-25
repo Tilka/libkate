@@ -1,6 +1,6 @@
 import sys
 import wx
-from constants import *
+from .constants import *
 
 base_width=480
 option_height=24
@@ -11,9 +11,8 @@ vpadding=8
 
 class UIOptions(wx.Dialog):
   def __init__(self,parent,options):
-    pre=wx.PreDialog()
-    pre.Create(parent,wx.ID_ANY,title=kdj_name+' options')
-    self.PostCreate(pre)
+    super().__init__()
+    self.Create(parent,wx.ID_ANY,title=kdj_name+' options')
 
     self.options=options
 
@@ -92,7 +91,7 @@ class UIOptions(wx.Dialog):
     label.Bind(wx.EVT_ENTER_WINDOW,lambda ev: self.SetHelpTextAndSkip(help_text,ev))
     label.Bind(wx.EVT_LEAVE_WINDOW,lambda ev: self.SetHelpTextAndSkip('',ev))
 
-    box.AddSpacer((8,0))
+    box.AddSpacer(8)
 
     list=wx.Choice(self, -1, (80,-1),choices=choices)
     list.SetStringSelection(default)

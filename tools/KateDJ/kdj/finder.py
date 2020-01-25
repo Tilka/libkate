@@ -15,7 +15,7 @@ def FindKateStreams(directory):
             serial=fragments[-2]
             dict[index]={'filename':filename,'language':language,'category':category,'serial':serial}
           else:
-            print 'Bad filename format: '+filename
+            print('Bad filename format: '+filename)
 
     return dict
 

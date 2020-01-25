@@ -1,8 +1,8 @@
 import sys
 import os
 
-from tools import Tools
-from finder import FindKateStreams
+from .tools import Tools
+from .finder import FindKateStreams
 
 class Muxer:
   def __init__(self,tools,filename,directory,type):

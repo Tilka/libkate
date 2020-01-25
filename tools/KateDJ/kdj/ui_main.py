@@ -1,15 +1,15 @@
 import sys
 import os
 import wx
-from ui_editor import UIEditor
-from ui_options import UIOptions
+from .ui_editor import UIEditor
+from .ui_options import UIOptions
 
-from constants import *
-from tools import Tools
-from demuxer import Demuxer
-from muxer import Muxer
-from finder import FindKateStreams
-from options import Options
+from .constants import *
+from .tools import Tools
+from .demuxer import Demuxer
+from .muxer import Muxer
+from .finder import FindKateStreams
+from .options import Options
 
 base_width=480
 base_height=240
@@ -29,7 +29,7 @@ class UIMain(wx.Frame):
 
     try:
       self.tools=Tools(wx.BeginBusyCursor,wx.EndBusyCursor)
-    except Exception,e:
+    except Exception as e:
       wx.MessageBox('Failed to find necessary tools:\n'+str(e),'Error',style=wx.OK|wx.CENTRE|wx.ICON_ERROR)
       sys.exit(1)
 
@@ -116,8 +116,8 @@ class UIMain(wx.Frame):
         for idx2 in kate_streams:
           dlg.addStream(kate_streams[idx2]['filename'])
       dlg.ShowModal()
-    except Exception,e:
-      print 'Exception: %s' % str(e)
+    except Exception as e:
+      print('Exception: %s' % str(e))
     dlg.Destroy()
     wx.EndBusyCursor()
 
@@ -185,7 +185,7 @@ class UIMain(wx.Frame):
   def OnDemuxButton(self,event):
     try:
       demuxer=Demuxer(self.tools,self.filename,self.options.format)
-    except Exception,e:
+    except Exception as e:
       wx.MessageBox('Failed to demux file:\n'+str(e),'Error',parent=self,style=wx.OK|wx.CENTRE|wx.ICON_ERROR)
       return
 
@@ -234,7 +234,7 @@ class UIMain(wx.Frame):
         self.RemoveTemporaryFiles(directory)
       except:
         wx.MessageBox('Failed to remove all temporary files from\n%s' % directory,'Error',parent=self,style=wx.OK|wx.CENTRE|wx.ICON_ERROR)
-    except Exception,e:
+    except Exception as e:
       wx.MessageBox('Failed to remux file:\n'+str(e),'Error',parent=self,style=wx.OK|wx.CENTRE|wx.ICON_ERROR)
 
   def OnOptionsButton(self,event):
